@@ -1,23 +1,30 @@
-//
-//  AdTableViewCell.swift
-//  KupujemProdajem
-//
-//  Created by Macbook on 21/11/2025.
-//
-
 import UIKit
 
-class AdTableViewCell: UITableViewCell {
+class OglasTableViewCell: UITableViewCell {
+    static let identifier = "OglasTableViewCell"
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    private let summaryView = AdSummaryView()
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+
+        contentView.addSubview(summaryView)
+        summaryView.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            summaryView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            summaryView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            summaryView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            summaryView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+        ])
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
+    func loadData(_ ad: AdSummary) {
+        summaryView.loadData(ad)
+    }
 }

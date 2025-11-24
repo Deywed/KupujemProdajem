@@ -1,8 +1,6 @@
-//
-//  AdsResponse.swift
-//  KupujemProdajem
-//
-//  Created by Macbook on 21/11/2025.
-//
-
 import Foundation
+
+struct AdsResponse: Codable {
+    let listaOglasa: [AdPage]
+    let detaljiOglasa: [AdDetails]
+}

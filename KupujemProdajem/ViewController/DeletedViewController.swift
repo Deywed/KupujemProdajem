@@ -1,29 +1,31 @@
-//
-//  DeletedViewController.swift
-//  KupujemProdajem
-//
-//  Created by Macbook on 21/11/2025.
-//
-
 import UIKit
 
 class DeletedViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        view.backgroundColor = AppStyle.Colors.background
+        view.addSubview(deletedView)
+        setupNavigationBar()
+        setupUI()
     }
-    
 
-    /*
-    // MARK: - Navigation
+    private let deletedView = AdSummaryDeleted()
+    private lazy var footerLabel: UILabel = self.createFooterLabel()
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setupUI() {
+        view.addSubview(deletedView)
+        deletedView.translatesAutoresizingMaskIntoConstraints = false
+        deletedView.addSubview(footerLabel)
+
+        NSLayoutConstraint.activate([
+            
+            deletedView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            deletedView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            deletedView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+
+            footerLabel.topAnchor.constraint(equalTo: deletedView.bottomAnchor, constant: 40),
+            footerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+
+        ])
     }
-    */
-
 }
